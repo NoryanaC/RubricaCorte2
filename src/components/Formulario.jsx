@@ -10,10 +10,16 @@ const Formulario = () => {
     const [estatura, setEstatura] = useState ('')
     const [peso, setPeso] = useState ('')
     const [nacionalidad, setNacionalidad] = useState ('')
+    const [img, setImg]= useState('')
 
     const [listaDeportistas, setListaDeportistas] = useState ([])
     const [modoEdicion, setModoEdicion] = useState (false)
     const [id, setId] = useState ('')
+
+    const cargarImg = async( )=>  {
+        const { url } = await fetch(`https://picsum.photos/200/300`)
+        return url;
+      }
 
 
     useEffect (()=>{
@@ -40,6 +46,7 @@ const Formulario = () => {
     const guardarDeportistas = async(e) => {
         e.preventDefault ()
         try {
+            const url = await cargarImg()
             const data = await addDoc(collection(db, 'Deportistas'),{
                 campoNombre: nombre,
                 campoApellido: apellido,
@@ -47,11 +54,12 @@ const Formulario = () => {
                 campoDeporte: deporte,
                 campoEstatura: estatura,
                 campoPeso: peso,
-                campoNacionalidad: nacionalidad
+                campoNacionalidad: nacionalidad,
+                campoImagen: url
             })
             setListaDeportistas([
                 ...listaDeportistas,
-                {campoNombre: nombre, campoApellido: apellido, campoEdad: edad, campoDeporte: deporte, campoEstatura: estatura, campoPeso: peso, campoNacionalidad: nacionalidad, id:data.id}
+                {campoNombre: nombre, campoApellido: apellido, campoEdad: edad, campoDeporte: deporte, campoEstatura: estatura, campoPeso: peso, campoNacionalidad: nacionalidad, id:data.id, campoImagen:url}
             ])
 
             setNombre ('')
@@ -137,6 +145,7 @@ const Formulario = () => {
                         {
                             listaDeportistas.map(item => (
                                 <li className= "list-group-item" key={item.id}>
+                                    <img src={item.campoImagen} alt="Imagen"/>
                                     <span className="lead">{item.campoNombre} - {item.campoApellido} - {item.campoEdad} - {item.campoDeporte} - {item.campoEstatura} - {item.campoPeso} - {item.campoNacionalidad}</span>
                                     <button className="btn btn-danger btn=sm float-end mx-2"
                                     onClick={()=>eliminar(item.id)}>Eliminar</button>
