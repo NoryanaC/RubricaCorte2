@@ -194,11 +194,7 @@ const Formulario = () => {
                     value={peso} 
                     onChange= {(e)=>setPeso(e.target.value)}/> 
 
-                    <input type="text" 
-                    Classname="form-control mb-2" 
-                    placeholder='Nacionalidad'
-                    value={nacionalidad} 
-                    onChange= {(e)=>setNacionalidad(e.target.value)}/>
+                    
 
                     {
                         modoEdicion ?
