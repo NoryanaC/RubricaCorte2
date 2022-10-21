@@ -161,40 +161,51 @@ const Formulario = () => {
                     <input type="text" 
                     Classname="form-control mb-2 center" 
                     placeholder='Nombre'
+                    required
                     value={nombre} 
                     onChange= {(e)=>setNombre(e.target.value)}/>
 
                     <input type="text" 
                     Classname="form-control mb-2" 
                     placeholder='Apellido'
+                    required
                     value={apellido} 
                     onChange= {(e)=>setApellido(e.target.value)}/>
 
                     <input type="number"
                     Classname="form-control mb-2" 
                     placeholder='Edad'
+                    required
                     value={edad} 
                     onChange= {(e)=>setEdad(e.target.value)}/> 
 
                     <input type="text" 
                     Classname="form-control mb-2" 
                     placeholder='Deporte'
+                    required
                     value={deporte} 
                     onChange= {(e)=>setDeporte(e.target.value)}/>
 
                     <input type="text" 
                     Classname="form-control mb-2" 
                     placeholder='Estatura'
+                    required
                     value={estatura} 
                     onChange= {(e)=>setEstatura(e.target.value)}/> 
 
                     <input type="number" 
                     Classname="form-control mb-2" 
                     placeholder='Peso'
+                    required
                     value={peso} 
                     onChange= {(e)=>setPeso(e.target.value)}/> 
 
-                    
+                    <input type="text" 
+                    Classname="form-control mb-2" 
+                    placeholder='Nacionalidad'
+                    required
+                    value={nacionalidad} 
+                    onChange= {(e)=>setNacionalidad(e.target.value)}/>
 
                     {
                         modoEdicion ?
